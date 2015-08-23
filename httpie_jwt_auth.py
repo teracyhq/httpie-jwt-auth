@@ -15,9 +15,9 @@ class JWTAuth(object):
     def __init__(self, token):
         self.token = token
 
-    def __call__(self, r):
-        r.headers['Authorization'] = 'Bearer {}'.format(self.token)
-        return r
+    def __call__(self, request):
+        request.headers['Authorization'] = 'Bearer {}'.format(self.token)
+        return request
 
 
 class JWTAuthPlugin(AuthPlugin):
@@ -29,5 +29,3 @@ class JWTAuthPlugin(AuthPlugin):
 
     def get_auth(self, username, password):
         return JWTAuth(username)
-
-
