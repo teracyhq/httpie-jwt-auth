@@ -25,7 +25,7 @@ class JWTAuthPlugin(AuthPlugin):
 
     name = 'JWT auth'
     auth_type = 'jwt'
-    description = 'Set the right request for JWT auth format'
+    description = 'Set the right format for JWT auth request'
 
     def get_auth(self, username, password):
         return JWTAuth(username)
