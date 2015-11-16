@@ -3,7 +3,7 @@ JWTAuth auth plugin for HTTPie.
 """
 
 from httpie.plugins import AuthPlugin
-
+import os
 
 __version__ = '0.2.0-dev0'
 __author__ = 'hoatle'
@@ -16,7 +16,12 @@ class JWTAuth(object):
         self.token = token
 
     def __call__(self, request):
-        request.headers['Authorization'] = 'Bearer {}'.format(self.token)
+        prefix = "Bearer"
+        if os.environ.has_key('JWT_AUTH_PREFIX'):
+            prefix = os.environ['JWT_AUTH_PREFIX']
+
+        prefix = prefix + ' {}'
+        request.headers['Authorization'] = prefix.format(self.token)
         return request
 
 
