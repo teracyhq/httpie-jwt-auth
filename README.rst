@@ -26,7 +26,7 @@ Note: Remember to add `:` after the token.
 FAQs
 ----
 
-#. How to load JWT token from a file?
+#.  How to load JWT token from a file?
 
     ..  code-block:: bash
 
@@ -34,6 +34,27 @@ FAQs
 
     See: https://github.com/teracyhq/httpie-jwt-auth/issues/4
 
+#.  How to use auth prefix other than default `Bearer`, for example `Token` instead?
+
+    You could use environment variable to specify `JWT_AUTH_PREFIX`.
+
+    ..  code-block:: bash
+
+        $ export JWT_AUTH_PREFIX=Token
+
+    and it should work:
+
+    .. code-block:: bash
+
+        $ http teracy.com --auth-type=jwt --auth=abc: -v
+
+        GET / HTTP/1.1
+        Accept: */*
+        Accept-Encoding: gzip, deflate
+        Authorization: Token abc
+        Connection: keep-alive
+        Host: teracy.com
+        User-Agent: HTTPie/0.9.2
 
 Discussions
 -----------
