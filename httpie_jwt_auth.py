@@ -1,9 +1,9 @@
 """
 JWTAuth auth plugin for HTTPie.
 """
+import os
 
 from httpie.plugins import AuthPlugin
-import os
 
 __version__ = '0.2.0-dev0'
 __author__ = 'hoatle'
@@ -12,16 +12,13 @@ __license__ = 'BSD'
 
 class JWTAuth(object):
     """JWTAuth to set the right Authorization header format of JWT"""
-    def __init__(self, token):
+
+    def __init__(self, token, auth_prefix):
         self.token = token
+        self.auth_prefix = auth_prefix
 
     def __call__(self, request):
-        prefix = "Bearer"
-        if os.environ.has_key('JWT_AUTH_PREFIX'):
-            prefix = os.environ['JWT_AUTH_PREFIX']
-
-        prefix = prefix + ' {}'
-        request.headers['Authorization'] = prefix.format(self.token)
+        request.headers['Authorization'] = '{} {}'.format(self.auth_prefix, self.token)
         return request
 
 
@@ -33,4 +30,7 @@ class JWTAuthPlugin(AuthPlugin):
     description = 'Set the right format for JWT auth request'
 
     def get_auth(self, username, password):
-        return JWTAuth(username)
+        auth_prefix = 'Bearer'
+        if os.environ.has_key('JWT_AUTH_PREFIX'):
+            auth_prefix = os.environ['JWT_AUTH_PREFIX']
+        return JWTAuth(username, auth_prefix)
