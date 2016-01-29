@@ -1,4 +1,4 @@
 Contributors
 ============
 
-Contributor Name - Email
+Remi Paulmier - remi.paulmier@gmail.com
