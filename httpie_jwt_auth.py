@@ -31,6 +31,6 @@ class JWTAuthPlugin(AuthPlugin):
 
     def get_auth(self, username, password):
         auth_prefix = 'Bearer'
-        if os.environ.has_key('JWT_AUTH_PREFIX'):
+        if 'JWT_AUTH_PREFIX' in os.environ:
             auth_prefix = os.environ['JWT_AUTH_PREFIX']
         return JWTAuth(username, auth_prefix)
