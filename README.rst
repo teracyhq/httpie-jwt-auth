@@ -34,13 +34,13 @@ FAQs
 
     See: https://github.com/teracyhq/httpie-jwt-auth/issues/4
 
-#.  How to use auth prefix other than default `Bearer`, for example `Token` instead?
+#.  How to use auth prefix other than default `Bearer`, for example `Token_Prefix` instead?
 
     You could use environment variable to specify `JWT_AUTH_PREFIX`.
 
     ..  code-block:: bash
 
-        $ export JWT_AUTH_PREFIX=Token
+        $ export JWT_AUTH_PREFIX=Token_Prefix
 
     and it should work:
 
@@ -51,7 +51,7 @@ FAQs
         GET / HTTP/1.1
         Accept: */*
         Accept-Encoding: gzip, deflate
-        Authorization: Token abc
+        Authorization: Token_Prefix abc
         Connection: keep-alive
         Host: teracy.com
         User-Agent: HTTPie/0.9.2
