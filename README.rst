@@ -10,7 +10,7 @@ Installation
 
 ..  code-block:: bash
 
-    $ pip install httpie-jwt-auth
+    $ pip install -U httpie-jwt-auth
 
 
 Usage

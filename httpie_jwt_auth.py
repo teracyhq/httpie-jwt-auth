@@ -5,7 +5,7 @@ import os
 
 from httpie.plugins import AuthPlugin
 
-__version__ = '0.2.0-dev0'
+__version__ = '0.2.0'
 __author__ = 'hoatle'
 __license__ = 'BSD'
 
