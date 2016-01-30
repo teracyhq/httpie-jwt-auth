@@ -1,4 +1,5 @@
 Contributors
 ============
 
-Remi Paulmier - remi.paulmier@gmail.com
+Ly Minh Phuong - phuonglm@teracy.com
+Remi Paulmier  - remi.paulmier@gmail.com
