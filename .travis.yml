@@ -19,7 +19,7 @@ script:
 - make test-clean
 - make test-unit
 after_success:
-- if [[ $TRAVIS_PYTHON_VERSION == $MOST_TESTED_PYTHON_VERSION ]]; then pip install
+- if [[ $TRAVIS_PYTHON_VERSION == $MOST_TESTED_PYTHON_VERSION && $HTTPie == 0.9.3 ]]; then pip install
   --quiet python-coveralls && make report-coverage && coveralls; fi
 - make check-style
 notifications:
