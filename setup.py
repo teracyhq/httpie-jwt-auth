@@ -1,10 +1,5 @@
 from setuptools import setup
 
-try:
-    import multiprocessing
-except ImportError:
-    pass
-
 import httpie_jwt_auth
 
 setup(
@@ -25,11 +20,17 @@ setup(
         ]
     },
     install_requires=[
-        'httpie>=0.7.0'
+        'httpie>=0.9.0'
     ],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Programming Language :: Python',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
         'Intended Audience :: Developers',
         'Environment :: Plugins',
         'License :: OSI Approved :: BSD License',
