@@ -1,5 +1,5 @@
-httpie-jwt-auth
-===============
+httpie-jwt-auth |travis build status|_ |coveralls status|_
+==========================================================
 
 `JWTAuth (JSON Web Tokens) <https://github.com/teracyhq/httpie-jwt-auth>`_ auth plugin for
 `HTTPie <https://github.com/jkbr/httpie>`_.
@@ -112,3 +112,9 @@ BSD License
   ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
   (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+.. |travis build status| image:: https://travis-ci.org/teracyhq/httpie-jwt-auth.png?branch=develop
+.. _travis build status: https://travis-ci.org/teracyhq/httpie-jwt-auth
+
+.. |coveralls status| image:: https://coveralls.io/repos/github/teracyhq/httpie-jwt-auth/badge.svg?branch=develop
+.. _coveralls status: https://coveralls.io/github/teracyhq/httpie-jwt-auth?branch=develop

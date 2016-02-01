@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 JWTAuth auth plugin for HTTPie.
 """
@@ -30,7 +32,5 @@ class JWTAuthPlugin(AuthPlugin):
     description = 'Set the right format for JWT auth request'
 
     def get_auth(self, username, password):
-        auth_prefix = 'Bearer'
-        if 'JWT_AUTH_PREFIX' in os.environ:
-            auth_prefix = os.environ['JWT_AUTH_PREFIX']
+        auth_prefix = os.environ.get('JWT_AUTH_PREFIX', 'Bearer')
         return JWTAuth(username, auth_prefix)
