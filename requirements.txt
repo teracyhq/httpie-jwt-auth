@@ -1,4 +1,5 @@
-httpie>=0.9.0
+# need to install httpie manually, it is excluded for travis-ci build matrix
+# httpie>=0.9.0
 # style check
 flake8>=2.5.1,<2.6.0
 pylint>=1.5.3,<1.6.0

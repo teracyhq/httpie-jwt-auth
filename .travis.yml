@@ -1,6 +1,10 @@
 sudo: false
 language: python
 env:
+  matrix:
+  - HTTPie=0.7.0
+  - HTTPie=0.8.0
+  - HTTPie=0.9.3
   global:
   - MOST_TESTED_PYTHON_VERSION=2.7
 python:
@@ -9,6 +13,7 @@ python:
 - '3.4'
 - '3.5'
 install:
+- pip install httpie==$HTTPie
 - pip install -r requirements.txt --upgrade
 script:
 - make test-clean
