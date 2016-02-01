@@ -14,7 +14,7 @@ test-unit:
 test: | test-clean test-unit
 
 report-coverage:
-	coverage report --omit=tests/*
+	coverage report --omit=tests/*,setup.py
 
 .DEFAULT_GOAL := resolve
 

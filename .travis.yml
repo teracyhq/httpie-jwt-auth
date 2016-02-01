@@ -1,5 +1,8 @@
 sudo: false # use container-based infrastructure instead of legacy
 language: python
+env:
+  global:
+    - MOST_TESTED_PYTHON_VERSION=2.7
 python:
   - "2.7"
   - "3.3"
@@ -8,14 +11,13 @@ python:
 
 install:
 - pip install -r requirements.txt --upgrade
-- pip install --quiet python-coveralls
 
 script:
 - make test-clean
 - make test-unit
 
 after_success:
-  - coveralls # unit test coverage only
+  - if [[ $TRAVIS_PYTHON_VERSION == $MOST_TESTED_PYTHON_VERSION ]]; then pip install --quiet python-coveralls && make report-coverage && coveralls; fi
   - make check-style
 
 notifications:
