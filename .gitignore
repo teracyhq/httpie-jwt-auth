@@ -197,3 +197,6 @@ pylint_report.txt
 # docs
 _build
 _deploy
+
+# https://github.com/z4r/python-coveralls/issues/45
+!.coveragerc
