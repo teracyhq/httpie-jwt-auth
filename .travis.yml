@@ -17,10 +17,11 @@ script:
 - make test-unit
 
 after_success:
-  - if [[ $TRAVIS_PYTHON_VERSION == $MOST_TESTED_PYTHON_VERSION ]]; then pip install --quiet python-coveralls && make report-coverage && coveralls; fi
-  - make check-style
-
+- if [[ $TRAVIS_PYTHON_VERSION == $MOST_TESTED_PYTHON_VERSION ]]; then pip install
+  --quiet python-coveralls && make report-coverage && coveralls; fi
+- make check-style
 notifications:
   slack:
     on_success: change
-    secure: QAvf45sVae4uzqON/XmP2wy3GvmmB66ccjYsDzDq5Ig9TzXzvdcarRyMu0LsM2pxNwMc3luQVKcs04HX+52amyy8AG9ngwknNAGKeo5s0c6O8rWwAxo4+k9r54habHTPliMUkfvkuTVv40qTR1QgZEE/yGsxqQrfcbxB7Rr3LYo=
+    on_pull_requests: false
+    secure: nC1H+2OTAcNR+ZmMOOJzvfUmtWrJmml8iwV4LwiGwQmB7O3q8CpsDWb9TBJ0B4QUK5QnXia3KpOT7c8kRq+gww6lq7GCaE6KbEQzoQZQLwdhsHa4gHQ1fSHWsvc5gr7I/psQT8ysgna0r+3/6NE61/gH/jUNq5++KxrhviLXqlB3HCWFDC2aktwfL2vzjs5IvEhELr/cUQtXSMymxi6mV4H01MhTMx3eY6ZiTohrmcGP+QSsvxU1DBsRO0NG5G/oK+BLYhD/HPsbVBxq8Wb5ZyQvPNI11ilZ1nh5pKvqpUr5aSDICWzxP+KzlYYwyx0iDQjTnb48agq0PHuLWCG/WITBdkx/kQYfyg5kh+Pura03b13eNZ/ZygRDmlAMxgkA/rYdPfgg5gWyPJDE72ekzjdAj7nY67EIrtk+O9WsMOEXGXhUtrnG9p7BNq9sD0Hkq8+6GavatQfb0V7ioEoCusPZOPCDoGNIzpKw1BDgMYHZBMieqK5Yo9WRP2/LRw1dIdA6IUaHQWx8MO14vqtQWC+hpomvV/yskETIuwbWRP5yR68SFHFwdZTzI7+E2joN7jZ+Ix8ypdnMcM4WNoqaKEB2uh2oX/e/IhkWMRy+gJ2QcDNhMgBNsKgaBOA6Zgge2mORPN+QdD0P+0Hy/Xkix51nq6rQsFxQisOZpt49tg8=
