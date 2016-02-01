@@ -1,21 +1,18 @@
-sudo: false # use container-based infrastructure instead of legacy
+sudo: false
 language: python
 env:
   global:
-    - MOST_TESTED_PYTHON_VERSION=2.7
+  - MOST_TESTED_PYTHON_VERSION=2.7
 python:
-  - "2.7"
-  - "3.3"
-  - "3.4"
-  - "3.5"
-
+- '2.7'
+- '3.3'
+- '3.4'
+- '3.5'
 install:
 - pip install -r requirements.txt --upgrade
-
 script:
 - make test-clean
 - make test-unit
-
 after_success:
 - if [[ $TRAVIS_PYTHON_VERSION == $MOST_TESTED_PYTHON_VERSION ]]; then pip install
   --quiet python-coveralls && make report-coverage && coveralls; fi
@@ -23,5 +20,7 @@ after_success:
 notifications:
   slack:
     on_success: change
+    on_failure: always
     on_pull_requests: false
-    secure: nC1H+2OTAcNR+ZmMOOJzvfUmtWrJmml8iwV4LwiGwQmB7O3q8CpsDWb9TBJ0B4QUK5QnXia3KpOT7c8kRq+gww6lq7GCaE6KbEQzoQZQLwdhsHa4gHQ1fSHWsvc5gr7I/psQT8ysgna0r+3/6NE61/gH/jUNq5++KxrhviLXqlB3HCWFDC2aktwfL2vzjs5IvEhELr/cUQtXSMymxi6mV4H01MhTMx3eY6ZiTohrmcGP+QSsvxU1DBsRO0NG5G/oK+BLYhD/HPsbVBxq8Wb5ZyQvPNI11ilZ1nh5pKvqpUr5aSDICWzxP+KzlYYwyx0iDQjTnb48agq0PHuLWCG/WITBdkx/kQYfyg5kh+Pura03b13eNZ/ZygRDmlAMxgkA/rYdPfgg5gWyPJDE72ekzjdAj7nY67EIrtk+O9WsMOEXGXhUtrnG9p7BNq9sD0Hkq8+6GavatQfb0V7ioEoCusPZOPCDoGNIzpKw1BDgMYHZBMieqK5Yo9WRP2/LRw1dIdA6IUaHQWx8MO14vqtQWC+hpomvV/yskETIuwbWRP5yR68SFHFwdZTzI7+E2joN7jZ+Ix8ypdnMcM4WNoqaKEB2uh2oX/e/IhkWMRy+gJ2QcDNhMgBNsKgaBOA6Zgge2mORPN+QdD0P+0Hy/Xkix51nq6rQsFxQisOZpt49tg8=
+    rooms:
+      secure: jXjeY5Rh4nflRST0oAzwJbOTm23ddcViq2rXhQbbVD5Dz/G177tczBuwPSvrGmZlaipSillBWHMii+De/cPvDBCfYhLZRLk/pJJCbm9HXwzbX19vJtnmMzi0jCEYJk9ayaDr4s56Qn7GCMM89TRYhpEY8JpIPyaYhbsh38CL6czv9K0XcfrWGHQHoIdVvOVtrgeoYWPqmDWwKKKBVjS7X5uVZzEnk5Pg/+pC0lDGI1HDyE7tTJpI1ApHu3v/6iMuR9aDFepQXh7XjzhdopFSpSY0MPT1/6BrWH0pU8MqXjTwbL32XFDBswKYkDcCgP0OIU1AtYMNAVcSTS1kth4NF6BiqrNSWyM68Dmx3Gz09qEk3gylsOoxvoIKOUvJ+s6jo1q93tW+d3Vb9AlGE4Gi78W0uhoLOBbwaVnMUY5b+LW1HdTkDNpORJ3iTn1/CRPVA711fGv4e8P7EEBdcWWCufdU1cHMiQKTdY8NfiM2BXQVi+Y62h+61CxOMbVuY1esjRkIbEh2d+9Xrs5f1YMpBI+pH7VJlkYduPJqDvm6sU+JoAJEUc/WtU3BvIQtY0n+5jvWs9Rnbx7W5JPFMGrnxVMlhVWkiiUKDpARhSpHHuQ9zQuMcRMIrXk7/9ZiRbwsrQYOCw+pwz75RJCw8yT6LgsHWqBz7mZ6D2n2DVQtJl4=
