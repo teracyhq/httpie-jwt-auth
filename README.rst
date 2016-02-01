@@ -8,9 +8,17 @@ httpie-jwt-auth |travis build status|_ |coveralls status|_
 Installation
 ------------
 
+- Latest stable version:
+
 ..  code-block:: bash
 
     $ pip install -U httpie-jwt-auth
+
+- Latest developing version:
+
+..  code-block:: bash
+
+    $ pip install -U https://github.com/teracyhq/httpie-jwt-auth/archive/develop.zip
 
 
 Usage
@@ -21,6 +29,12 @@ Usage
     $ http --auth-type=jwt --auth='<token>:' example.org
 
 Note: Remember to add `:` after the token.
+
+
+Contributing
+------------
+
+Please create pull requests to the `develop` branch by following http://dev.teracy.org/docs/workflow.html
 
 
 FAQs
