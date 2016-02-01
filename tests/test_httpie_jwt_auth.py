@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """unit test for httpie_jwt_auth"""
 import os
+from unittest import TestCase
 
 from httpie.plugins import AuthPlugin
-from unittest import TestCase
 
 from httpie_jwt_auth import JWTAuth, JWTAuthPlugin, __version__, __author__, __license__
 
