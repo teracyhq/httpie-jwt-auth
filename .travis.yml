@@ -13,8 +13,9 @@ python:
 - '3.4'
 - '3.5'
 install:
-- pip install httpie==$HTTPie
 - pip install -r requirements.txt --upgrade
+- pip uninstall -y httpie
+- pip install httpie==$HTTPie
 script:
 - make test-clean
 - make test-unit
