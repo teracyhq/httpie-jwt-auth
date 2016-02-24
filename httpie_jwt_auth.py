@@ -20,7 +20,7 @@ class JWTAuth(object):
         self.auth_prefix = auth_prefix
 
     def __call__(self, request):
-        request.headers['Authorization'] = '{} {}'.format(self.auth_prefix, self.token)
+        request.headers['Authorization'] = '{0} {1}'.format(self.auth_prefix, self.token)
         return request
 
 
