@@ -1,5 +1,5 @@
-httpie-jwt-auth |travis build status|_ |coveralls status|_
-==========================================================
+httpie-jwt-auth |travis build status|_ |coveralls status|_ |pypi status|_
+==========================================================================
 
 `JWTAuth (JSON Web Tokens) <https://github.com/teracyhq/httpie-jwt-auth>`_ auth plugin for
 `HTTPie <https://github.com/jkbr/httpie>`_.
@@ -132,3 +132,6 @@ BSD License
 
 .. |coveralls status| image:: https://coveralls.io/repos/github/teracyhq/httpie-jwt-auth/badge.svg?branch=develop
 .. _coveralls status: https://coveralls.io/github/teracyhq/httpie-jwt-auth?branch=develop
+
+.. |pypi status| image:: https://badge.fury.io/py/httpie-jwt-auth.svg
+.. _pypi status: https://badge.fury.io/py/httpie-jwt-auth
