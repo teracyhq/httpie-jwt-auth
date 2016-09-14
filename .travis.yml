@@ -2,9 +2,10 @@ sudo: false
 language: python
 env:
   matrix:
-  - HTTPie=0.7.0
+  - HTTPie=0.7.2
   - HTTPie=0.8.0
-  - HTTPie=0.9.3
+  - HTTPie=0.9.4
+  - HTTPie=0.9.6
   global:
   - MOST_TESTED_PYTHON_VERSION=2.7
 python:
