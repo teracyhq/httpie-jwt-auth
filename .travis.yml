@@ -6,6 +6,8 @@ env:
   - HTTPie=0.8.0
   - HTTPie=0.9.4
   - HTTPie=0.9.6
+  - HTTPie=0.9.7
+  - HTTPie=0.9.8
   global:
   - MOST_TESTED_PYTHON_VERSION=2.7
 python:
