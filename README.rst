@@ -26,7 +26,7 @@ Usage
 
 ..  code-block:: bash
 
-    $ http --auth-type=jwt --auth='<token>:' example.org
+    $ http --auth-type=jwt --auth="<token>:" example.org
 
 Note: Remember to add `:` after the token.
 
@@ -44,7 +44,7 @@ FAQs
 
     ..  code-block:: bash
 
-        $ http --auth-type=jwt --auth=$(cat mytoken.txt): example.org
+        $ http --auth-type=jwt --auth="$(cat mytoken.txt):" example.org
 
     See: https://github.com/teracyhq/httpie-jwt-auth/issues/4
 
@@ -60,7 +60,7 @@ FAQs
 
     .. code-block:: bash
 
-        $ http teracy.com --auth-type=jwt --auth=abc: -v
+        $ http teracy.com --auth-type=jwt --auth="abc:" -v
 
         GET / HTTP/1.1
         Accept: */*
