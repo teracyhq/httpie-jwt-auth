@@ -31,3 +31,5 @@ ADD . $APP/
 RUN pip install httpie==$HTTPie_VERSION
 
 RUN pip install .
+
+ENTRYPOINT ["http"]
