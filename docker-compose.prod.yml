@@ -9,6 +9,13 @@ services:
     image: ${DOCKER_IMAGE:-teracyhq/httpie-jwt-auth:py27_httpie_latest_develop}
     command: bash -c ""
 
+  httpie_latest-alpine:
+    container_name: py27_httpie_latest-alpine
+    build:
+      dockerfile: Dockerfile-alpine
+    image: ${DOCKER_IMAGE:-teracyhq/httpie-jwt-auth:py27_httpie_latest-alpine_develop}
+    command: bash -c ""
+
   httpie_0_9_8:
     container_name: py27_httpie_0_9_8
     build:
