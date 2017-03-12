@@ -1,4 +1,4 @@
 Authors
 =======
 
-Hoat Le - hoatle@teracy.com
+Hoat Le - hoatle at teracy dot com
