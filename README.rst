@@ -36,6 +36,47 @@ Contributing
 
 Please create pull requests to the `develop` branch by following http://dev.teracy.org/docs/workflow.html
 
+Developing
+----------
+
+We use Docker workflow for development now. To start developing:
+
+- Make sure to use teracy-dev by following: http://dev.teracy.org/docs/getting_started.html
+
+- Fork this repo and clone to `~/teracy-dev/workspace`:
+
+..  code-block:: bash
+
+    $ cd ~/teracy-dev/workspace
+    $ git clone <your_forked_repo>
+    $ cd httpie-jwt-auth
+    $ git remote add upstream git@github.com:teracyhq/httpie-jwt-auth.git
+
+- SSH into the VM to run commands as following:
+
+..  code-block:: bash
+
+    $ cd ~/teracy-dev
+    $ vagrant ssh
+    $ ws
+    $ cd httpie-jwt-auth
+    $ docker-compose up # to test all the supported httpie versions with the most used Python version
+    $ docker-compose up httpie_latest # to test with the latest httpie version with the most used Python version
+    $ docker-compose -f docker-compose.yml -f docker-compose.py36.yml up # to test all the supported httpie versions with Python 3.6
+
+- Register your account at https://travis-ci.org and enable `httpie-jwt-auth` repo
+
+- Add the following settings to the travis-ci repo:
+
+    + `DOCKER_USER` for the user or organization Docker namespace
+    + `DOCKER_USERNAME` for the username of the Docker Hub
+    + `DOCKER_PASSWORD` for the password of the Docker Hub
+    + `IMG_REPO` for the docker repo on your `DOCKER_USER` account
+    + `IMG_REPO_PREFIX` is optional
+
+  See .travis.yml for details
+
+- Start creating new Docker images to be shared within our community
 
 FAQs
 ----

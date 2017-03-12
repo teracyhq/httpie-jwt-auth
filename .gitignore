@@ -200,3 +200,5 @@ _deploy
 
 # https://github.com/z4r/python-coveralls/issues/45
 !.coveragerc
+!.env
+!.dockerignore
