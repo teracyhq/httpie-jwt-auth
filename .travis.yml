@@ -65,7 +65,7 @@ script:
 after_success:
 - if [[ $DOCKER_COMPOSE_FILE == "docker-compose.yml" && $DOCKER_COMPOSE_SERVICE = "httpie_latest" ]]; then
     pip install --quiet python-coveralls && docker-compose -f $DOCKER_COMPOSE_FILE run $DOCKER_COMPOSE_SERVICE make report-coverage &&
-    docker container run --rm -v $(pwd):/opt/app -w /opt/app teracy/python-coveralls ; fi
+    docker container run --rm -v $(pwd):/opt/app -w /opt/app -e TRAVIS_BRANCH=$TRAVIS_BRANCH teracy/python-coveralls ; fi
 - docker-compose -f $DOCKER_COMPOSE_FILE run --rm $DOCKER_COMPOSE_SERVICE make check-style
 - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 - docker image push $DOCKER_IMAGE
