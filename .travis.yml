@@ -1,31 +1,73 @@
-sudo: false
-language: python
+sudo: required
+services:
+  - docker
 env:
   matrix:
-  - HTTPie=0.7.2
-  - HTTPie=0.8.0
-  - HTTPie=0.9.4
-  - HTTPie=0.9.6
-  - HTTPie=0.9.7
-  - HTTPie=0.9.8
+  - IMG_TAG=dev_py27_httpie_latest DOCKER_COMPOSE_FILE="docker-compose.yml"                            DOCKER_COMPOSE_SERVICE=httpie_latest
+  - IMG_TAG=dev_py27_httpie_0_9_8  DOCKER_COMPOSE_FILE="docker-compose.yml"                            DOCKER_COMPOSE_SERVICE=httpie_0_9_8
+  - IMG_TAG=dev_py27_httpie_0_9_7  DOCKER_COMPOSE_FILE="docker-compose.yml"                            DOCKER_COMPOSE_SERVICE=httpie_0_9_7
+  - IMG_TAG=dev_py27_httpie_0_8_0  DOCKER_COMPOSE_FILE="docker-compose.yml"                            DOCKER_COMPOSE_SERVICE=httpie_0_8_0
+  - IMG_TAG=dev_py27_httpie_0_7_2  DOCKER_COMPOSE_FILE="docker-compose.yml"                            DOCKER_COMPOSE_SERVICE=httpie_0_7_2
+  - IMG_TAG=dev_py33_httpie_latest DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.py33.yml" DOCKER_COMPOSE_SERVICE=httpie_latest
+  - IMG_TAG=dev_py33_httpie_0_9_8  DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.py33.yml" DOCKER_COMPOSE_SERVICE=httpie_0_9_8
+  - IMG_TAG=dev_py33_httpie_0_9_7  DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.py33.yml" DOCKER_COMPOSE_SERVICE=httpie_0_9_7
+  - IMG_TAG=dev_py33_httpie_0_8_0  DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.py33.yml" DOCKER_COMPOSE_SERVICE=httpie_0_8_0
+  - IMG_TAG=dev_py33_httpie_0_7_2  DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.py33.yml" DOCKER_COMPOSE_SERVICE=httpie_0_7_2
+  - IMG_TAG=dev_py34_httpie_latest DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.py34.yml" DOCKER_COMPOSE_SERVICE=httpie_latest
+  - IMG_TAG=dev_py34_httpie_0_9_8  DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.py34.yml" DOCKER_COMPOSE_SERVICE=httpie_0_9_8
+  - IMG_TAG=dev_py34_httpie_0_9_7  DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.py34.yml" DOCKER_COMPOSE_SERVICE=httpie_0_9_7
+  - IMG_TAG=dev_py34_httpie_0_8_0  DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.py34.yml" DOCKER_COMPOSE_SERVICE=httpie_0_8_0
+  - IMG_TAG=dev_py34_httpie_0_7_2  DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.py34.yml" DOCKER_COMPOSE_SERVICE=httpie_0_7_2
+  - IMG_TAG=dev_py35_httpie_latest DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.py35.yml" DOCKER_COMPOSE_SERVICE=httpie_latest
+  - IMG_TAG=dev_py35_httpie_0_9_8  DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.py35.yml" DOCKER_COMPOSE_SERVICE=httpie_0_9_8
+  - IMG_TAG=dev_py35_httpie_0_9_7  DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.py35.yml" DOCKER_COMPOSE_SERVICE=httpie_0_9_7
+  - IMG_TAG=dev_py35_httpie_0_8_0  DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.py35.yml" DOCKER_COMPOSE_SERVICE=httpie_0_8_0
+  - IMG_TAG=dev_py35_httpie_0_7_2  DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.py35.yml" DOCKER_COMPOSE_SERVICE=httpie_0_7_2
+  - IMG_TAG=dev_py36_httpie_latest DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.py36.yml" DOCKER_COMPOSE_SERVICE=httpie_latest
+  - IMG_TAG=dev_py36_httpie_0_9_8  DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.py36.yml" DOCKER_COMPOSE_SERVICE=httpie_0_9_8
+  - IMG_TAG=dev_py36_httpie_0_9_7  DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.py36.yml" DOCKER_COMPOSE_SERVICE=httpie_0_9_7
+  - IMG_TAG=dev_py36_httpie_0_8_0  DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.py36.yml" DOCKER_COMPOSE_SERVICE=httpie_0_8_0
+  - IMG_TAG=dev_py36_httpie_0_7_2  DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.py36.yml" DOCKER_COMPOSE_SERVICE=httpie_0_7_2
+  - IMG_TAG=py27_httpie_latest     DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.prod.yml" DOCKER_COMPOSE_SERVICE=httpie_latest
+  - IMG_TAG=py27_httpie_0_9_8      DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.prod.yml" DOCKER_COMPOSE_SERVICE=httpie_0_9_8
+  - IMG_TAG=py27_httpie_0_9_7      DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.prod.yml" DOCKER_COMPOSE_SERVICE=httpie_0_9_7
+  - IMG_TAG=py27_httpie_0_8_0      DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.prod.yml" DOCKER_COMPOSE_SERVICE=httpie_0_8_0
+  - IMG_TAG=py27_httpie_0_7_2      DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.prod.yml" DOCKER_COMPOSE_SERVICE=httpie_0_7_2
   global:
-  - MOST_TESTED_PYTHON_VERSION=2.7
-python:
-- '2.7'
-- '3.3'
-- '3.4'
-- '3.5'
-install:
-- pip install -r requirements.txt --upgrade
-- pip uninstall -y httpie
-- pip install httpie==$HTTPie
+    DOCKER_COMPOSE_VERSION: 1.11.2
+    CI_BUILD_TIME: $(date -u +"%Y-%m-%dT%H:%M:%SZ")
+    CI_BUILD_ID: $TRAVIS_BUILD_ID
+    CI_BUILD_REF: $TRAVIS_COMMIT
+    CI_BUILD_REF_NAME: $TRAVIS_BRANCH
+    CI_BUILD_NUMBER: $TRAVIS_BUILD_NUMBER
+    CI_BUILDER: travis-ci
+    CI_PROJECT_NAME: $TRAVIS_REPO_SLUG
+before_install:
+  # install the latest docker and docker-compose versions
+  - sudo apt-get remove docker docker-engine
+  - sudo curl -sSL https://get.docker.com/ | sh
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+  - docker --version
+  - docker-compose --version
+before_script:
+- export CI_REGISTRY_IMAGE=$DOCKER_USER/${IMG_REPO_PREFIX}$IMG_REPO
+- export IMG_TAG_AFFIX=`if [ "$TRAVIS_BRANCH" != "master" ]; then echo "_${TRAVIS_BRANCH}" | sed -e 's/[\/]/-/g' | sed -e 's/[\#]//g'; fi`
+- export DOCKER_IMAGE=$CI_REGISTRY_IMAGE:$IMG_TAG$IMG_TAG_AFFIX
 script:
-- make test-clean
-- make test-unit
+- echo "docker-compose -f $DOCKER_COMPOSE_FILE build $DOCKER_COMPOSE_SERVICE"
+- docker-compose -f $DOCKER_COMPOSE_FILE build $DOCKER_COMPOSE_SERVICE
+- if [[ $IMG_TAG == *"dev_"* ]]; then
+    docker-compose -f $DOCKER_COMPOSE_FILE run --rm $DOCKER_COMPOSE_SERVICE make test; fi
 after_success:
-- if [[ $TRAVIS_PYTHON_VERSION == $MOST_TESTED_PYTHON_VERSION && $HTTPie == 0.9.3 ]]; then pip install
-  --quiet python-coveralls && make report-coverage && coveralls; fi
-- make check-style
+- if [[ $DOCKER_COMPOSE_FILE == "docker-compose.yml" && $DOCKER_COMPOSE_SERVICE = "httpie_latest" ]]; then
+    pip install --quiet python-coveralls && docker-compose -f $DOCKER_COMPOSE_FILE run $DOCKER_COMPOSE_SERVICE make report-coverage &&
+    docker container run --rm -v $(pwd):/opt/app -w /opt/app teracy/python-coveralls ; fi
+- docker-compose -f $DOCKER_COMPOSE_FILE run --rm $DOCKER_COMPOSE_SERVICE make check-style
+- docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+- docker image push $DOCKER_IMAGE
 notifications:
   slack:
     on_success: change

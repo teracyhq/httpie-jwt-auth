@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+
+  httpie_latest:
+    container_name: py27_httpie_latest
+    build:
+      dockerfile: Dockerfile
+    image: ${DOCKER_IMAGE:-teracyhq/httpie-jwt-auth:py27_httpie_latest_develop}
+    command: bash -c ""
+
+  httpie_0_9_8:
+    container_name: py27_httpie_0_9_8
+    build:
+      dockerfile: Dockerfile
+    image: ${DOCKER_IMAGE:-teracyhq/httpie-jwt-auth:py27_httpie_0_9_8_develop}
+    command: bash -c ""
+
+  httpie_0_9_7:
+    container_name: py27_httpie_0_9_7
+    build:
+      dockerfile: Dockerfile
+    image: ${DOCKER_IMAGE:-teracyhq/httpie-jwt-auth:py27_httpie_0_9_7_develop}
+    command: bash -c ""
+
+  httpie_0_8_0:
+    container_name: py27_httpie_0_8_0
+    build:
+      dockerfile: Dockerfile
+    image: ${DOCKER_IMAGE:-teracyhq/httpie-jwt-auth:py27_httpie_0_8_0_develop}
+    command: bash -c ""
+
+  httpie_0_7_2:
+    container_name: py27_httpie_0_7_2
+    build:
+      dockerfile: Dockerfile
+    image: ${DOCKER_IMAGE:-teracyhq/httpie-jwt-auth:py27_httpie_0_7_2_develop}
+    command: bash -c ""

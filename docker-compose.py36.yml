@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+
+  httpie_latest:
+    container_name: dev_py36_httpie_latest
+    build:
+      dockerfile: Dockerfile-dev-py36
+    image: ${DOCKER_IMAGE:-teracyhq/httpie-jwt-auth:dev_py36_httpie_latest_develop}
+
+  httpie_0_9_8:
+    container_name: dev_py36_httpie_0_9_8
+    build:
+      dockerfile: Dockerfile-dev-py36
+    image: ${DOCKER_IMAGE:-teracyhq/httpie-jwt-auth:dev_py36_httpie_0_9_8_develop}
+
+  httpie_0_9_7:
+    container_name: dev_py36_httpie_0_9_7
+    build:
+      dockerfile: Dockerfile-dev-py36
+    image: ${DOCKER_IMAGE:-teracyhq/httpie-jwt-auth:dev_py36_httpie_0_9_7_develop}
+
+  httpie_0_8_0:
+    container_name: dev_py36_httpie_0_8_0
+    build:
+      dockerfile: Dockerfile-dev-py36
+    image: ${DOCKER_IMAGE:-teracyhq/httpie-jwt-auth:dev_py36_httpie_0_8_0_develop}
+
+  httpie_0_7_2:
+    container_name: dev_py36_httpie_0_7_2
+    build:
+      dockerfile: Dockerfile-dev-py36
+    image: ${DOCKER_IMAGE:-teracyhq/httpie-jwt-auth:dev_py36_httpie_0_7_2_develop}

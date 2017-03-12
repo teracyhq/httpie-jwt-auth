@@ -1,0 +1,95 @@
+version: '3'
+
+services:
+
+  httpie_latest:
+    container_name: dev_py27_httpie_latest
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+      args:
+        CI_BUILD_ID: ${CI_BUILD_ID}
+        CI_BUILD_REF: ${CI_BUILD_REF}
+        CI_BUILD_REF_NAME: ${CI_BUILD_REF_NAME}
+        CI_BUILD_TIME: ${CI_BUILD_TIME}
+        CI_REGISTRY_IMAGE: ${CI_REGISTRY_IMAGE}
+        CI_PROJECT_NAME: ${CI_PROJECT_NAME}
+        CI_BUILD_NUMBER: ${CI_BUILD_NUMBER}
+        CI_BUILDER: ${CI_BUILDER}
+        HTTPie_VERSION: 0.9.9
+    image: ${DOCKER_IMAGE:-teracyhq/httpie-jwt-auth:dev_py27_httpie_latest_develop}
+    command: bash -c "./run_qa.sh"
+    volumes:
+      - .:/opt/app
+
+  httpie_0_9_8:
+    container_name: dev_py27_httpie_0_9_8
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+      args:
+        CI_BUILD_ID: ${CI_BUILD_ID}
+        CI_BUILD_REF: ${CI_BUILD_REF}
+        CI_BUILD_REF_NAME: ${CI_BUILD_REF_NAME}
+        CI_BUILD_TIME: ${CI_BUILD_TIME}
+        CI_REGISTRY_IMAGE: ${CI_REGISTRY_IMAGE}
+        CI_PROJECT_NAME: ${CI_PROJECT_NAME}
+        HTTPie_VERSION: 0.9.8
+    image: ${DOCKER_IMAGE:-teracyhq/httpie-jwt-auth:dev_py27_httpie_0_9_8_develop}
+    command: bash -c "./run_qa.sh"
+    volumes:
+      - .:/opt/app
+
+  httpie_0_9_7:
+    container_name: dev_py27_httpie_0_9_7
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+      args:
+        CI_BUILD_ID: ${CI_BUILD_ID}
+        CI_BUILD_REF: ${CI_BUILD_REF}
+        CI_BUILD_REF_NAME: ${CI_BUILD_REF_NAME}
+        CI_BUILD_TIME: ${CI_BUILD_TIME}
+        CI_REGISTRY_IMAGE: ${CI_REGISTRY_IMAGE}
+        CI_PROJECT_NAME: ${CI_PROJECT_NAME}
+        HTTPie_VERSION: 0.9.7
+    image: ${DOCKER_IMAGE:-teracyhq/httpie-jwt-auth:dev_py27_httpie_0_9_7_develop}
+    command: bash -c "./run_qa.sh"
+    volumes:
+      - .:/opt/app
+
+  httpie_0_8_0:
+    container_name: dev_py27_httpie_0_80
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+      args:
+        CI_BUILD_ID: ${CI_BUILD_ID}
+        CI_BUILD_REF: ${CI_BUILD_REF}
+        CI_BUILD_REF_NAME: ${CI_BUILD_REF_NAME}
+        CI_BUILD_TIME: ${CI_BUILD_TIME}
+        CI_REGISTRY_IMAGE: ${CI_REGISTRY_IMAGE}
+        CI_PROJECT_NAME: ${CI_PROJECT_NAME}
+        HTTPie_VERSION: 0.8.0
+    image: ${DOCKER_IMAGE:-teracyhq/httpie-jwt-auth:dev_py27_httpie_0_8_0_develop}
+    command: bash -c "./run_qa.sh"
+    volumes:
+      - .:/opt/app
+
+  httpie_0_7_2:
+    container_name: dev_py27_httpie_0_7_2
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+      args:
+        CI_BUILD_ID: ${CI_BUILD_ID}
+        CI_BUILD_REF: ${CI_BUILD_REF}
+        CI_BUILD_REF_NAME: ${CI_BUILD_REF_NAME}
+        CI_BUILD_TIME: ${CI_BUILD_TIME}
+        CI_REGISTRY_IMAGE: ${CI_REGISTRY_IMAGE}
+        CI_PROJECT_NAME: ${CI_PROJECT_NAME}
+        HTTPie_VERSION: 0.7.2
+    image: ${DOCKER_IMAGE:-teracyhq/httpie-jwt-auth:dev_py27_httpie_0_7_2_develop}
+    command: bash -c "./run_qa.sh"
+    volumes:
+      - .:/opt/app
