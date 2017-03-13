@@ -35,7 +35,7 @@ class JWTAuthPlugin(AuthPlugin):
 
     def get_auth(self, username=None, password=None):
         auth_prefix = os.environ.get('JWT_AUTH_PREFIX', 'Bearer')
-        env_token = os.environ.get('JWT_AUTH_TOKEN', None)
+        env_token = os.environ.get('JWT_AUTH_TOKEN')
         if username is None:
             username = env_token
         if username is None:
