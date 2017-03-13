@@ -30,7 +30,14 @@ class JWTAuthPlugin(AuthPlugin):
     name = 'JWT auth'
     auth_type = 'jwt'
     description = 'Set the right format for JWT auth request'
+    auth_require = False
+    prompt_password = False
 
-    def get_auth(self, username, password):
+    def get_auth(self, username=None, password=None):
         auth_prefix = os.environ.get('JWT_AUTH_PREFIX', 'Bearer')
+        env_token = os.environ.get('JWT_AUTH_TOKEN')
+        if username is None:
+            username = env_token
+        if username is None:
+            raise Exception('--auth or JWT_AUTH_TOKEN required error')
         return JWTAuth(username, auth_prefix)

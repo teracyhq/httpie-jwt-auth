@@ -20,15 +20,54 @@ Installation
 
     $ pip install -U https://github.com/teracyhq/httpie-jwt-auth/archive/develop.zip
 
+- This version requires HTTPie v0.9.7 and above. If you can not use this new version, you can use:
+  https://github.com/teracyhq/httpie-jwt-auth/tree/v0.2.1
+
 
 Usage
 -----
 
-..  code-block:: bash
+- Normal:
 
-    $ http --auth-type=jwt --auth="<token>:" example.org
+    ..  code-block:: bash
 
-Note: Remember to add `:` after the token.
+        $ http --auth-type=jwt --auth="<token>" example.org -h
+
+        GET / HTTP/1.1
+        Accept: */*
+        Accept-Encoding: gzip, deflate
+        Authorization: Token_Prefix abc
+        Connection: keep-alive
+        Host: example.org
+        User-Agent: HTTPie/0.9.7
+
+- By default, the ``Bearer`` prefix auth token is used, you can choose another prefix:
+
+    ..  code-block:: bash
+
+        $ JWT_AUTH_PREFIX=JWT && http --auth-type=jwt --auth="<token>" example.org -h
+
+- Sometimes you don't need to expose the JWT token on the command line, you can use the environment variable:
+
+    ..  code-block:: bash
+
+        $ export JWT_AUTH_TOKEN=secret
+
+    And it should work:
+
+    .. code-block:: bash
+
+        $ http teracy.com --auth-type=jwt -v
+
+        GET / HTTP/1.1
+        Accept: */*
+        Accept-Encoding: gzip, deflate
+        Authorization: Bearer secret
+        Connection: keep-alive
+        Host: teracy.com
+        User-Agent: HTTPie/0.9.7
+
+You can combine the usage whatever you like for your cases.
 
 
 Contributing
@@ -85,13 +124,13 @@ FAQs
 
     ..  code-block:: bash
 
-        $ http --auth-type=jwt --auth="$(cat mytoken.txt):" example.org
+        $ http --auth-type=jwt --auth="$(cat mytoken.txt)" example.org
 
     See: https://github.com/teracyhq/httpie-jwt-auth/issues/4
 
 #.  How to use auth prefix other than default `Bearer`, for example `Token_Prefix` instead?
 
-    You could use environment variable to specify `JWT_AUTH_PREFIX`.
+    You could use environment variable to specify `JWT_AUTH_PREFIX` for permanent prefix usage:
 
     ..  code-block:: bash
 
@@ -101,7 +140,7 @@ FAQs
 
     .. code-block:: bash
 
-        $ http teracy.com --auth-type=jwt --auth="abc:" -v
+        $ http teracy.com --auth-type=jwt --auth="abc" -v
 
         GET / HTTP/1.1
         Accept: */*
@@ -109,7 +148,22 @@ FAQs
         Authorization: Token_Prefix abc
         Connection: keep-alive
         Host: teracy.com
-        User-Agent: HTTPie/0.9.2
+        User-Agent: HTTPie/0.9.7
+
+    or for one time usage only with the specified jwt auth prefix:
+
+    .. code-block:: bash
+
+        $ JWT_AUTH_PREFIX=Token_Prefix && http teracy.com --auth-type=jwt --auth="abc" -v
+
+        GET / HTTP/1.1
+        Accept: */*
+        Accept-Encoding: gzip, deflate
+        Authorization: Token_Prefix abc
+        Connection: keep-alive
+        Host: teracy.com
+        User-Agent: HTTPie/0.9.7
+
 
 Discussions
 -----------

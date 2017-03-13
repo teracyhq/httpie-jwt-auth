@@ -26,8 +26,8 @@ ENV CI_BUILD_ID=$CI_BUILD_ID CI_BUILD_REF=$CI_BUILD_REF CI_REGISTRY_IMAGE=$CI_RE
 
 WORKDIR $APP
 
-ADD requirements.txt $APP/requirements.txt
+ADD requirements-dev.txt $APP/requirements-dev.txt
 
-RUN pip install -r $APP/requirements.txt
+RUN pip install -r $APP/requirements-dev.txt
 
 RUN pip install httpie==$HTTPie_VERSION

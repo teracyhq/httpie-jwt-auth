@@ -1,0 +1,12 @@
+# style check
+flake8
+pylint
+
+# test
+mock
+pytest
+pytest-cov
+pytest-httpbin
+
+# dev
+ipython

@@ -2,7 +2,6 @@
 
 set -e
 
-pip install -e .
-make test
+#pip install -e .
 make check-style
-make report-coverage
+make test
