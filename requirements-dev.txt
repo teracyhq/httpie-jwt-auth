@@ -4,11 +4,9 @@ pylint
 
 # test
 mock
-nose
 pytest
 pytest-cov
 pytest-httpbin
-coverage
 
 # dev
 ipython
