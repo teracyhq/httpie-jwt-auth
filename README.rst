@@ -31,7 +31,7 @@ Docker Image
   https://github.com/teracyhq/docker-files/tree/master/httpie-jwt-auth
 
 - To try out our latest development Docker image, use this Docker image:
-  `teracy/httpie-jwt-auth:py27_httpie_latest-alpine_develop`
+  ``teracy/httpie-jwt-auth:py27_httpie_latest-alpine_develop``
 
 Usage
 -----
