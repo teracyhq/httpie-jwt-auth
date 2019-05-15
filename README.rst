@@ -54,7 +54,7 @@ Usage
 
     ..  code-block:: bash
 
-        $ JWT_AUTH_PREFIX=JWT && http --auth-type=jwt --auth="<token>" example.org -h
+        $ JWT_AUTH_PREFIX=JWT http --auth-type=jwt --auth="<token>" example.org -h
 
 - Sometimes you don't need to expose the JWT token on the command line, you can use the environment variable:
 
@@ -163,7 +163,7 @@ FAQs
 
     .. code-block:: bash
 
-        $ JWT_AUTH_PREFIX=Token_Prefix && http teracy.com --auth-type=jwt --auth="abc" -v
+        $ JWT_AUTH_PREFIX=Token_Prefix http teracy.com --auth-type=jwt --auth="abc" -v
 
         GET / HTTP/1.1
         Accept: */*
