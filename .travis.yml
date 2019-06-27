@@ -6,9 +6,6 @@ env:
   - IMG_TAG=dev_py27_httpie_latest    DOCKER_COMPOSE_FILE="docker-compose.yml"                            DOCKER_COMPOSE_SERVICE=httpie_latest
   - IMG_TAG=dev_py27_httpie_0_9_8     DOCKER_COMPOSE_FILE="docker-compose.yml"                            DOCKER_COMPOSE_SERVICE=httpie_0_9_8
   - IMG_TAG=dev_py27_httpie_0_9_7     DOCKER_COMPOSE_FILE="docker-compose.yml"                            DOCKER_COMPOSE_SERVICE=httpie_0_9_7
-  - IMG_TAG=dev_py33_httpie_latest    DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.py33.yml" DOCKER_COMPOSE_SERVICE=httpie_latest
-  - IMG_TAG=dev_py33_httpie_0_9_8     DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.py33.yml" DOCKER_COMPOSE_SERVICE=httpie_0_9_8
-  - IMG_TAG=dev_py33_httpie_0_9_7     DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.py33.yml" DOCKER_COMPOSE_SERVICE=httpie_0_9_7
   - IMG_TAG=dev_py34_httpie_latest    DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.py34.yml" DOCKER_COMPOSE_SERVICE=httpie_latest
   - IMG_TAG=dev_py34_httpie_0_9_8     DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.py34.yml" DOCKER_COMPOSE_SERVICE=httpie_0_9_8
   - IMG_TAG=dev_py34_httpie_0_9_7     DOCKER_COMPOSE_FILE="docker-compose.yml -f docker-compose.py34.yml" DOCKER_COMPOSE_SERVICE=httpie_0_9_7
