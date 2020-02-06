@@ -15,12 +15,13 @@ __license__ = 'BSD'
 class JWTAuth(object):
     """JWTAuth to set the right Authorization header format of JWT"""
 
-    def __init__(self, token, auth_prefix):
+    def __init__(self, token, auth_header, auth_prefix):
         self.token = token
+        self.auth_header = auth_header
         self.auth_prefix = auth_prefix
 
     def __call__(self, request):
-        request.headers['Authorization'] = '{0} {1}'.format(self.auth_prefix, self.token)
+        request.headers[self.auth_header] = '{0} {1}'.format(self.auth_prefix, self.token)
         return request
 
 
@@ -34,10 +35,11 @@ class JWTAuthPlugin(AuthPlugin):
     prompt_password = False
 
     def get_auth(self, username=None, password=None):
+        auth_header = os.environ.get('JWT_AUTH_HEADER', 'Authorization')
         auth_prefix = os.environ.get('JWT_AUTH_PREFIX', 'Bearer')
         env_token = os.environ.get('JWT_AUTH_TOKEN')
         if username is None:
             username = env_token
         if username is None:
             raise Exception('--auth or JWT_AUTH_TOKEN required error')
-        return JWTAuth(username, auth_prefix)
+        return JWTAuth(username, auth_header, auth_prefix)

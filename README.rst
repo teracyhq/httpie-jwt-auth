@@ -56,6 +56,12 @@ Usage
 
         $ JWT_AUTH_PREFIX=JWT http --auth-type=jwt --auth="<token>" example.org -h
 
+- Also by default, the ``Authorization`` auth header is used, but you can choose another one:
+
+    ..  code-block:: bash
+
+        $ JWT_AUTH_HEADER=X-Foobar-Authorization http --auth-type=jwt --auth="<token>" example.org -h
+
 - Sometimes you don't need to expose the JWT token on the command line, you can use the environment variable:
 
     ..  code-block:: bash

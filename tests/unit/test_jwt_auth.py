@@ -12,9 +12,10 @@ def test_meta_info():
 
 def test_init():
     from httpie_jwt_auth import JWTAuth
-    jwt_auth = JWTAuth('token', 'prefix')
+    jwt_auth = JWTAuth('token', 'header', 'prefix')
 
     assert jwt_auth.token == 'token'
+    assert jwt_auth.auth_header == 'header'
     assert jwt_auth.auth_prefix == 'prefix'
 
 
@@ -25,8 +26,8 @@ def test_call():
             self.headers = headers
 
     request = RequestMock({})
-    jwt_auth = JWTAuth('token', 'prefix')
+    jwt_auth = JWTAuth('token', 'header', 'prefix')
     updated_request = jwt_auth(request)
 
-    assert updated_request.headers['Authorization'] is not None
-    assert updated_request.headers['Authorization'] == 'prefix token'
+    assert updated_request.headers['header'] is not None
+    assert updated_request.headers['header'] == 'prefix token'

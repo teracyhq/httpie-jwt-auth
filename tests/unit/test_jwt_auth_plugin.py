@@ -40,6 +40,16 @@ def test_get_auth_prefix():
     del os.environ['JWT_AUTH_PREFIX']
 
 
+def test_get_auth_header():
+    os.environ['JWT_AUTH_HEADER'] = 'X-Foobar-Authorization'
+    jwt_auth_plugin = JWTAuthPlugin()
+    jwt_auth = jwt_auth_plugin.get_auth('token', '')
+
+    assert jwt_auth.token == 'token'
+    assert jwt_auth.auth_header == 'X-Foobar-Authorization'
+    del os.environ['JWT_AUTH_HEADER']
+
+
 def test_get_auth_prefix_and_token():
     os.environ['JWT_AUTH_PREFIX'] = 'JWT'
     os.environ['JWT_AUTH_TOKEN'] = 'secret'
