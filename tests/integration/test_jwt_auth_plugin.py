@@ -117,6 +117,26 @@ def test_specified_env_prefix(httpbin):
     del os.environ['JWT_AUTH_PREFIX']
 
 
+def test_specified_env_header(httpbin):
+    """
+    $ JWT_AUTH_HEADER=X-Foobar-Authorization && http --auth-type=jwt --auth="xyz" [url]
+    => the right X-Foobar-Authorization request header
+    """
+    os.environ['JWT_AUTH_HEADER'] = 'X-Foobar-Authorization'
+    assert os.environ.get('JWT_AUTH_HEADER') == 'X-Foobar-Authorization'
+    r = http(
+        '--auth-type',
+        'jwt',
+        '--auth',
+        'xyz',
+        httpbin.url + '/headers'
+    )
+    assert HTTP_OK in r
+    assert r.json['headers']['X-Foobar-Authorization'] == 'Bearer xyz'
+    # cleanup
+    del os.environ['JWT_AUTH_HEADER']
+
+
 def test_specified_both_env_prefix_and_env_token(httpbin):
     os.environ['JWT_AUTH_PREFIX'] = 'JWT'
     os.environ['JWT_AUTH_TOKEN'] = 'secret'
