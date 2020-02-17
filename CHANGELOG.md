@@ -1,6 +1,19 @@
 Change Log
 ==========
 
+[v0.4.0][] (2019-02-18)
+-----------------------
+
+- Features:
+  + Allow to override the name of the header #34
+
+- Improvements:
+  + docs updated with flask_jwt #27
+  + should update CI/CD to test httpie versions >= 1.0.0 #36
+
+Details: https://github.com/teracyhq/httpie-jwt-auth/milestone/5?closed=1
+
+
 [v0.3.0][] (2017-03-21)
 -----------------------
 
@@ -50,3 +63,4 @@ Release the first milestone
 [v0.2.0]: https://github.com/teracyhq/httpie-jwt-auth/issues?q=milestone%3A0.2.0+is%3Aclosed
 [v0.2.1]: https://github.com/teracyhq/httpie-jwt-auth/issues?q=milestone%3A0.2.1+is%3Aclosed
 [v0.3.0]: https://github.com/teracyhq/httpie-jwt-auth/milestone/3?closed=1
+[v0.4.0]: https://github.com/teracyhq/httpie-jwt-auth/milestone/5?closed=1
