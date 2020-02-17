@@ -20,7 +20,7 @@ Installation
 
     $ pip install -U https://github.com/teracyhq/httpie-jwt-auth/archive/develop.zip
 
-- This version requires HTTPie v0.9.7 and above. If you can not use this new version, you can use:
+- This version requires HTTPie v1.0.0 and above. If you can not use this new version, you can use:
   https://github.com/teracyhq/httpie-jwt-auth/tree/v0.2.1
 
 
