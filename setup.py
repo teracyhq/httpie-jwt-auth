@@ -20,7 +20,7 @@ setup(
         ]
     },
     install_requires=[
-        'httpie>=0.9.7'
+        'httpie>=1.0.0'
     ],
     classifiers=[
         'Development Status :: 4 - Beta',
@@ -32,6 +32,8 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
         'Intended Audience :: Developers',
         'Environment :: Plugins',
         'License :: OSI Approved :: BSD License',

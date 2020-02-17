@@ -99,7 +99,7 @@ def test_env_token_and_auth(httpbin):
 
 def test_specified_env_prefix(httpbin):
     """
-    $ JWT_AUTH_PREFIX=JWT && http --auth-type=jwt --auth="xyz" [url]
+    $ JWT_AUTH_PREFIX=JWT http --auth-type=jwt --auth="xyz" [url]
     => the right Authorization request header with defined token prefix (JWT)
     """
     os.environ['JWT_AUTH_PREFIX'] = 'JWT'
@@ -119,7 +119,7 @@ def test_specified_env_prefix(httpbin):
 
 def test_specified_env_header(httpbin):
     """
-    $ JWT_AUTH_HEADER=X-Foobar-Authorization && http --auth-type=jwt --auth="xyz" [url]
+    $ JWT_AUTH_HEADER=X-Foobar-Authorization http --auth-type=jwt --auth="xyz" [url]
     => the right X-Foobar-Authorization request header
     """
     os.environ['JWT_AUTH_HEADER'] = 'X-Foobar-Authorization'
@@ -152,10 +152,27 @@ def test_specified_both_env_prefix_and_env_token(httpbin):
     del os.environ['JWT_AUTH_TOKEN']
 
 
+def test_specified_env_header_and_env_prefix_and_env_token(httpbin):
+    os.environ['JWT_AUTH_HEADER'] = 'X-Foobar-Authorization'
+    os.environ['JWT_AUTH_PREFIX'] = 'JWT'
+    os.environ['JWT_AUTH_TOKEN'] = 'secret'
+    r = http(
+        '--auth-type',
+        'jwt',
+        httpbin.url + '/headers'
+    )
+    assert HTTP_OK in r
+    assert r.json['headers']['X-Foobar-Authorization'] == 'JWT secret'
+    # cleanup
+    del os.environ['JWT_AUTH_HEADER']
+    del os.environ['JWT_AUTH_PREFIX']
+    del os.environ['JWT_AUTH_TOKEN']
+
+
 # TODO(hoatle): implement this
 # def test_specified_option_prefix(httpbin):
 #     """
-#     $ http --auth-type="jwt" --auth="abc" --auth-prefix="JWT [url]"
+#     $ http --auth-type="jwt" --auth="abc" --auth-prefix="JWT" [url]
 #     => the right Authorization request header with defined token prefix (JWT)
 #     use this way when you have to switch with different jwt auth prefix
 #     this requires HTTPie version 0.9.7 and above

@@ -24,14 +24,13 @@ Installation
   https://github.com/teracyhq/httpie-jwt-auth/tree/v0.2.1
 
 
-Docker Image
-------------
+Supported HTTPie Version
+------------------------
 
-- It's recommended that you should use our built Docker image, see:
-  https://github.com/teracyhq/docker-files/tree/master/httpie-jwt-auth
+- Supports HTTPie >= 1.0.0
 
-- To try out our latest development Docker image, use this Docker image:
-  ``teracy/httpie-jwt-auth:py27_httpie_latest-alpine_develop``
+- `httpie-jwt-auth` can work with older versions of HTTPie
+
 
 Usage
 -----
