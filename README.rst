@@ -27,10 +27,9 @@ Installation
 Supported HTTPie Version
 ------------------------
 
-- Supports HTTPie >= 1.0.0
-
-- `httpie-jwt-auth` can work with older versions of HTTPie
-
+- `httpie-jwt-auth (version >= 0.4.0)` supports `HTTPie (version >= 1.0.0)`
+- `httpie-jwt-auth (version > 0.2.1)` supports `HTTPie (version >= 0.9.7)`
+- `httpie-jwt-auth (version <= 0.2.1)` supports `HTTPie (version >= 0.9.2)`
 
 Usage
 -----
